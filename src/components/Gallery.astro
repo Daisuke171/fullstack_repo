@@ -1,0 +1,54 @@
+---
+const images = [
+  { src: "/image/ergo_proxy.jpg", alt: "Ergo Proxy", size: "large" },
+  { src: "/image/hajime_no_ippo.png", alt: "Hajime no Ippo", size: "large" },
+  { src: "/image/hellsing_ultimate.jpg", alt: "Hellsing Ultimate", size: "normal" },
+  { src: "/image/planet_survival.jpg", alt: "Planet Survival", size: "normal" },
+  { src: "/image/samurai_champloo.png", alt: "Samurai Champloo", size: "normal" },
+  { src: "/image/beck.png", alt: "Beck", size: "normal" },
+  { src: "/image/dragon_head.jpg", alt: "Dragon Head", size: "large" },
+  { src: "/image/berserk.jpg", alt: "Berserk", size: "large" },
+  { src: "/image/dorohedoro.png", alt: "Dorohedoro", size: "normal" },
+  { src: "/image/homunculus.jpg", alt: "Homunculus", size: "normal" },
+  { src: "/image/tokyo_godfathers.jpg", alt: "Tokyo Godfathers", size: "normal" }
+];
+import Cards from "./cards.astro";
+---
+
+<section class="container">
+   <div class="animeList">
+    {
+      images.map( image => (
+        <Cards title={image.alt} img={image.src} size={image.size} />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  *{
+    margin: 0 0.5rem; 
+  }
+
+  .container {
+    max-width: 100svh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .animeList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.2rem;
+    margin: 0 auto;
+  }
+  .animeList .size-large {
+    grid-column: span 2;
+  }
+  .animeList .size-normal {
+    grid-column: span 1;
+  }
+
+  
+</style>

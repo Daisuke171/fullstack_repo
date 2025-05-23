@@ -1,0 +1,90 @@
+---
+const { title, img, size } = Astro.props;
+---
+
+<article class={`card size-${size}`}>
+  <img src={img} alt={title} />
+  <h2>{title}</h2>
+</article>
+
+<style>
+    .card {
+        width: auto;
+        border: 1px solid oklch(0.9525 0 261);
+        border-radius: 20px;
+        padding: 1.5rem;
+        text-align: center;
+        background-color: oklch(0.184 0 261);
+        transition:0.2s ease;
+      }
+    .card img {
+        width: 16rem;
+        height: 90%;
+        border-radius: 20px;
+        border: solid 1px oklch(0.9525 0 261);
+      }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card:hover img {
+        transform: scale(1.05);
+        transition: 0.2s ease;
+    }
+    h2 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: oklch(0.9525 0 261);
+    }
+    .card.size-large {
+        grid-column: span 2;
+    }
+
+    .card.size-normal {
+        grid-column: span 1;
+    }
+
+    @media (max-width: 770px) {
+        .card {
+            width: 100%;
+            padding: 0.5rem;
+        }
+        .card img {
+            width: 10rem;
+            height: 80%;
+        }
+        h2 {
+            font-size: 1.2rem;
+        }
+        .card.size-large {
+            grid-column: span 2;
+        }
+        .card.size-normal {
+            grid-column: span 1;
+        }
+    }
+    @media (max-width: 500px) {
+        .card {
+            padding: 0.5rem;
+        }
+        .card img {
+            width: 5rem;
+            height: 70%;
+        }
+        h2 {
+            font-size: 1rem;
+        }
+        .card.size-large {
+            grid-column: span 2;
+        }
+        .card.size-normal {
+            grid-column: span 1;
+        }
+        article.card.size-large{
+            max-width: 200px;
+            align-self: center;
+        }
+        
+    }
+</style>

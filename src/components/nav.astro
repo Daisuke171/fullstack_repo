@@ -1,0 +1,97 @@
+---
+const { option1, option2, option3, option4 } = Astro.props;
+---
+
+<nav>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+        <li><a href="/">{option1}</a></li>
+        <li><a href="/about">{option2}</a></li>
+        <li><a href="#">{option3}</a></li>
+        <li><a href="#">{option4}</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        background-color: oklch(0.184 0 261);
+        padding: 1rem;
+        border-radius: 20px;
+        margin: 1rem auto;
+        max-width: 800px;
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+    }
+    li {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    a {
+        text-decoration: none;
+        color: oklch(0.9525 0 261);
+        font-size: 1.2rem;
+    }
+    a:hover {
+        color: oklch(0.9525 0 261);
+        text-decoration: underline;
+    }
+
+    @media (max-width: 770px) {
+        nav {
+            padding: 0.5rem;
+            width: 70%;
+        }
+        ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        li {
+            text-align: center;
+            font-size: 1rem;
+        }
+        a{
+            font-size: 1.5rem;
+        }
+    }
+    @media (max-width: 500px) {
+        .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    ul {
+      justify-content: center;
+    }
+
+    li {
+      text-align: center;
+      font-size: 1rem;
+    }
+  }
+        
+    }
+</style>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>

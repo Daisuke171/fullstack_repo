@@ -1,0 +1,86 @@
+---
+// Props opcionales si quieres hacerlo reutilizable
+const { name = "ushi", role = "Product Manager", img = "/image/user.jpg" } = Astro.props;
+---
+
+<div class="avatar-container">
+  <div class="avatar">
+    <img src={img} alt={name} />
+    <div class="user-info">
+      <p class="name">{name}</p>
+      <p class="role">{role}</p>
+      <button>Contactar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .avatar-container {
+    container-type: inline-size;
+    container-name: avatar;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    box-sizing: border-box;
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  @container avatar (min-width: 300px) {
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .role,
+    button {
+      display: none;
+    }
+  }
+
+  @container avatar (min-width: 500px) {
+    .role {
+      display: block;
+      color: gray;
+      font-size: 0.95rem;
+    }
+
+    button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+  }
+</style>

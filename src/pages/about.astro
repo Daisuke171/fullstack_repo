@@ -1,18 +1,14 @@
 ---
 import MainLayout from "../layout/MainLayout.astro";
-import Gallery from "../components/Gallery.astro";
 import Nav from "../components/nav.astro";
 import UserAvatar from "../components/user.astro";
 ---
 
-<MainLayout title="Home">
-  <section>
-    <Nav option1="Home" option2="About" option3="Gallery" option4="Contact" />
-    <Gallery />
-    <UserAvatar
+<MainLayout title="About">
+  <Nav option1="Home" option2="About" option3="Gallery" option4="Contact" />
+  <UserAvatar
       name="Agus"
       role="Desarrollador"
       img="/image/ergo_proxy.jpg"
     />
-  </section>
 </MainLayout>
